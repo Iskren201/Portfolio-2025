@@ -21,7 +21,7 @@ const AllProjects: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 4000); // 4 seconds to show the loading animation
     return () => clearTimeout(timer);
   }, []);
 
@@ -122,9 +122,17 @@ const AllProjects: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl text-gray-400 max-w-3xl mx-auto mb-8"
+              className="text-xl text-gray-400 max-w-3xl mx-auto mb-4"
             >
               Explore my portfolio of projects showcasing modern web development, mobile applications, and innovative solutions.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-lg text-purple-400 max-w-2xl mx-auto mb-8 font-medium"
+            >
+              🚧 Currently working on and uploading more exciting projects! Stay tuned for updates.
             </motion.p>
 
             {/* Search Bar */}
@@ -183,13 +191,87 @@ const AllProjects: React.FC = () => {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex justify-center items-center py-20"
+            className="flex flex-col justify-center items-center py-20"
           >
+            {/* Animated Construction Icon */}
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full"
-            />
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 200 }}
+              className="mb-8"
+            >
+              <motion.div
+                animate={{ 
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="text-8xl"
+              >
+                🚧
+              </motion.div>
+            </motion.div>
+
+            {/* Loading Message */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center"
+            >
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Building Amazing Projects
+              </h3>
+              <p className="text-xl text-purple-400 mb-6">
+                Currently working on and uploading more exciting projects!
+              </p>
+              <p className="text-lg text-gray-400">
+                Stay tuned for updates...
+              </p>
+            </motion.div>
+
+            {/* Animated Dots */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex space-x-2 mt-8"
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    delay: i * 0.2,
+                    ease: "easeInOut"
+                  }}
+                  className="w-3 h-3 bg-purple-500 rounded-full"
+                />
+              ))}
+            </motion.div>
+
+            {/* Spinning Loader */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="mt-8"
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full"
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -239,20 +321,33 @@ const AllProjects: React.FC = () => {
 
                   {/* Project Image */}
                   <div className="relative h-56 overflow-hidden">
-                    <motion.div
-                      initial={{ scale: 1.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                      className={`w-full h-full bg-gradient-to-br ${categoryColors[project.category]} opacity-20 flex items-center justify-center`}
-                    >
-                      <span className="text-6xl" aria-hidden="true">🚀</span>
-                    </motion.div>
+                    {project.image && !project.image.includes('/api/placeholder/') ? (
+                      <motion.img
+                        initial={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <motion.div
+                        initial={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                        className={`w-full h-full bg-gradient-to-br ${categoryColors[project.category]} opacity-20 flex items-center justify-center`}
+                      >
+                        <span className="text-6xl" aria-hidden="true">🚀</span>
+                      </motion.div>
+                    )}
                     
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="flex space-x-3">
                         <motion.a
                           href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           className="px-4 py-2 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors duration-200 shadow-lg"
@@ -262,6 +357,8 @@ const AllProjects: React.FC = () => {
                         </motion.a>
                         <motion.a
                           href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           className="px-4 py-2 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-200 shadow-lg"
@@ -436,6 +533,8 @@ const AllProjects: React.FC = () => {
                 <div className="flex gap-4">
                   <motion.a
                     href={selectedProject.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full text-center hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg"
@@ -444,6 +543,8 @@ const AllProjects: React.FC = () => {
                   </motion.a>
                   <motion.a
                     href={selectedProject.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex-1 px-6 py-3 border border-white/20 text-white font-semibold rounded-full text-center hover:bg-white/10 transition-all duration-300"
