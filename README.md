@@ -33,7 +33,7 @@ A stunning, animated portfolio website built with React, TypeScript, Tailwind CS
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone Portfolio-2025
 cd portfolio-website
 ```
 
@@ -78,8 +78,8 @@ The color scheme can be customized in `tailwind.config.js`:
 theme: {
   extend: {
     colors: {
-      primary: '#your-color',
-      secondary: '#your-color',
+      primary: '-primary',
+      secondary: '-secundary',
     }
   }
 }
@@ -148,6 +148,4 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 📞 Contact
 
-John Doe - [@johndoe](https://twitter.com/johndoe) - john.doe@example.com
-
-Project Link: [https://github.com/johndoe/portfolio-website](https://github.com/johndoe/portfolio-website)
+John Doe - [@Iskren Iliev] - iskren201@gmail.com
