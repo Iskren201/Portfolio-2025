@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { fadeInUp, staggerContainer, staggerItem } from '../lib/animations';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const socialLinks = [
+    // Change me to real icons  
     { name: 'GitHub', href: '#', icon: '🐙' },
     { name: 'LinkedIn', href: '#', icon: '💼' },
     { name: 'Twitter', href: '#', icon: '🐦' },
@@ -21,9 +25,22 @@ const Footer: React.FC = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If we're already on home page, just scroll
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
