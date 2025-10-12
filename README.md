@@ -148,4 +148,4 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 📞 Contact
 
-John Doe - [@Iskren Iliev] - iskren201@gmail.com
+Iskren Iliev - iskren201@gmail.com
