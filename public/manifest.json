@@ -1,0 +1,29 @@
+{
+  "name": "Iskren Iliev - Frontend Developer Portfolio",
+  "short_name": "Iskren Iliev",
+  "description": "Professional Frontend Developer specializing in ReactJS, AngularJS, NodeJS, and TypeScript. Creating modern, responsive web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["portfolio", "developer", "technology"],
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
+}
