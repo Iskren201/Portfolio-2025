@@ -8,7 +8,6 @@ const Hero: React.FC = () => {
     'AngularJS Developer',
     'NodeJS & NestJS',
     'Full-Stack Developer',
-    'TypeScript Expert',
   ];
 
   const scrollToProjects = () => {
