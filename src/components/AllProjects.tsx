@@ -15,7 +15,6 @@ const AllProjects: React.FC = () => {
     { id: 'mobile', name: 'Mobile Apps', count: projects.filter(p => p.category === 'mobile').length },
     { id: 'backend', name: 'Backend', count: projects.filter(p => p.category === 'backend').length },
     { id: 'fullstack', name: 'Full Stack', count: projects.filter(p => p.category === 'fullstack').length },
-    { id: 'design', name: 'Design', count: projects.filter(p => p.category === 'design').length },
   ];
 
   useEffect(() => {

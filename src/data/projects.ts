@@ -9,7 +9,7 @@ export interface Project {
   demoUrl: string;
   repoUrl: string;
   featured?: boolean;
-  category: 'web' | 'mobile' | 'backend' | 'fullstack' | 'design';
+  category: 'web' | 'mobile' | 'backend' | 'fullstack';
   status: 'completed' | 'in-progress' | 'planned';
   year: number;
   duration: string;
@@ -130,60 +130,6 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: 'Portfolio Website',
-    description: 'Coming soon: refreshed portfolio with advanced animations and performance optimizations.',
-    longDescription: 'Planned next iteration of the personal portfolio with refined motion design, improved accessibility, and streamlined navigation. Focus on clean code, performance, and consistent theming.',
-    image: '',
-    technologies: ['React', 'Framer Motion', 'Tailwind CSS', 'TypeScript', 'Vite', 'React Router', 'React Helmet'],
-    tags: ['Portfolio', 'Animation', 'Responsive', 'Modern Design'],
-    demoUrl: '',
-    repoUrl: '',
-    featured: true,
-    category: 'web',
-    status: 'planned',
-    year: 2025,
-    duration: 'TBA',
-    challenges: [],
-    achievements: []
-  },
-  {
-    id: 6,
-    title: 'University Projects',
-    description: 'Coming soon: curated archive of academic projects with notes and code samples.',
-    longDescription: 'Planned collection of selected university projects presented with context, learnings, and code refactors to modern standards.',
-    image: '',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'ReactJS', 'NodeJS', 'MongoDB', 'Bootstrap', 'jQuery'],
-    tags: ['Learning', 'Academic', 'Progressive', 'Diverse'],
-    demoUrl: '',
-    repoUrl: '',
-    featured: false,
-    category: 'web',
-    status: 'planned',
-    year: 2025,
-    duration: 'TBA',
-    challenges: [],
-    achievements: []
-  },
-  {
-    id: 7,
-    title: 'E-commerce Mobile App',
-    description: 'Coming soon: cross-platform e-commerce app with modern UI/UX.',
-    longDescription: 'Planned React Native app with authentication, product catalog, cart, and checkout flow. Emphasis on smooth UX, offline-ready patterns, and modular architecture.',
-    image: '',
-    technologies: ['React Native', 'Redux', 'Firebase', 'Stripe', 'Push Notifications', 'AsyncStorage', 'React Navigation'],
-    tags: ['Mobile', 'E-commerce', 'Cross-platform', 'Offline'],
-    demoUrl: '',
-    repoUrl: '',
-    featured: true,
-    category: 'mobile',
-    status: 'planned',
-    year: 2025,
-    duration: 'TBA',
-    challenges: [],
-    achievements: []
-  },
-  {
-    id: 8,
     title: 'Crypto & FX Radar',
     description: 'Real-time cryptocurrency and forex market dashboard with portfolio tracking, price alerts, and backtesting capabilities.',
     longDescription: 'A modern, full-featured financial dashboard built with React 19 and TypeScript. Features real-time price updates from CoinGecko and ExchangeRate APIs, comprehensive portfolio management with P&L calculations, intelligent price alerts with browser notifications, and advanced backtesting tools for trading strategies (MA, RSI, MACD, Bollinger Bands). Includes interactive charts, dark/light theme support, responsive design, and smooth animations for live price changes.',
@@ -238,41 +184,6 @@ export const projects: Project[] = [
       'Ensured data persistence across sessions using localStorage with proper error handling'
     ]
   },
-  {
-    id: 9,
-    title: 'Task Management System',
-    description: 'Coming soon: team-oriented task manager with real-time collaboration.',
-    longDescription: 'Planned web app for projects, tasks, and reporting with drag-and-drop and live updates. Focus on clarity, speed, and maintainable data flows.',
-    image: '',
-    technologies: ['Vue.js', 'Express', 'MySQL', 'Socket.io', 'Chart.js', 'Docker', 'JWT', 'Multer'],
-    tags: ['Productivity', 'Collaboration', 'Project Management', 'Team Work'],
-    demoUrl: '',
-    repoUrl: '',
-    featured: false,
-    category: 'web',
-    status: 'planned',
-    year: 2025,
-    duration: 'TBA',
-    challenges: [],
-    achievements: []
-  },
-  {
-    id: 10,
-    title: 'Weather Dashboard',
-    description: 'Coming soon: interactive weather dashboard with maps and forecasts.',
-    longDescription: 'Planned PWA for real-time weather, multi-day forecasts, and map layers. Targeting fast loads, offline support, and accessible data visualizations.',
-    image: '',
-    technologies: ['React', 'TypeScript', 'Weather API', 'Mapbox', 'Chart.js', 'PWA', 'Service Workers'],
-    tags: ['Weather', 'Real-time', 'Maps', 'PWA'],
-    demoUrl: '',
-    repoUrl: '',
-    featured: false,
-    category: 'web',
-    status: 'planned',
-    year: 2025,
-    duration: 'TBA',
-    challenges: [],
-    achievements: []
-  }
+
 
 ];

@@ -1,4 +1,6 @@
-export const fadeInUp = {
+import type { Variants } from 'framer-motion';
+
+export const fadeInUp: Variants = {
   initial: {
     opacity: 0,
     y: 30,
@@ -9,7 +11,7 @@ export const fadeInUp = {
   },
 };
 
-export const scaleIn = {
+export const scaleIn: Variants = {
   initial: {
     opacity: 0,
     scale: 0.9,
@@ -24,7 +26,7 @@ export const scaleIn = {
   },
 };
 
-export const staggerContainer = {
+export const staggerContainer: Variants = {
   initial: {},
   animate: {
     transition: {
@@ -34,7 +36,7 @@ export const staggerContainer = {
   },
 };
 
-export const staggerItem = {
+export const staggerItem: Variants = {
   initial: {
     opacity: 0,
     y: 20,
@@ -49,7 +51,7 @@ export const staggerItem = {
   },
 };
 
-export const revealOnScroll = {
+export const revealOnScroll: Variants = {
   initial: {
     opacity: 0,
     y: 24,
@@ -66,7 +68,7 @@ export const revealOnScroll = {
   },
 };
 
-export const projectCard = {
+export const projectCard: Variants = {
   initial: {
     opacity: 0,
     y: 24,
@@ -83,7 +85,7 @@ export const projectCard = {
   },
 };
 
-export const projectContainer = {
+export const projectContainer: Variants = {
   initial: {},
   animate: {
     transition: {
@@ -93,7 +95,7 @@ export const projectContainer = {
   },
 };
 
-export const slideInFromLeft = {
+export const slideInFromLeft: Variants = {
   initial: {
     opacity: 0,
     x: -50,
@@ -108,7 +110,7 @@ export const slideInFromLeft = {
   },
 };
 
-export const slideInFromRight = {
+export const slideInFromRight: Variants = {
   initial: {
     opacity: 0,
     x: 50,
@@ -123,7 +125,7 @@ export const slideInFromRight = {
   },
 };
 
-export const hoverScale = {
+export const hoverScale: Variants = {
   hover: {
     scale: 1.05,
     transition: {
@@ -133,7 +135,7 @@ export const hoverScale = {
   },
 };
 
-export const hoverGlow = {
+export const hoverGlow: Variants = {
   hover: {
     boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
     transition: {

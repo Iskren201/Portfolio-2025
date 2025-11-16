@@ -9,12 +9,8 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   const socialLinks = [
-    // Change me to real icons  
-    { name: 'GitHub', href: '#', icon: '🐙' },
-    { name: 'LinkedIn', href: '#', icon: '💼' },
-    { name: 'Twitter', href: '#', icon: '🐦' },
-    { name: 'Dribbble', href: '#', icon: '🎨' },
-    { name: 'Instagram', href: '#', icon: '📷' },
+    { name: 'GitHub', href: 'https://github.com/Iskren201', icon: '🐙' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/iskren-iliev-31a809257/', icon: '💼' },
   ];
 
   const quickLinks = [
@@ -59,14 +55,15 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">Iskren Iliev</h3>
               <p className="text-gray-400 leading-relaxed max-w-md">
-                Frontend Developer & Full-Stack Engineer creating efficient, 
+                Frontend Developer & Full-Stack Engineer creating efficient,
                 user-friendly solutions with modern web technologies.
               </p>
               <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
+                    target='_blank'
                     variants={staggerItem}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -143,20 +140,20 @@ const Footer: React.FC = () => {
               © {currentYear} Iskren Iliev. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 data-hover
               >
                 Privacy Policy
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 data-hover
               >
                 Terms of Service
-              </a>
+              </a> */}
             </div>
           </div>
         </motion.div>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { revealOnScroll, staggerContainer, staggerItem, scaleIn } from '../lib/animations';
+
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,21 +22,55 @@ const Contact: React.FC = () => {
     });
   };
 
+  const socials = [
+    {
+      name: 'GitHub',
+      url: 'https://github.com/Iskren201',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/iskren-iliev-31a809257/',
+    },
+  ];
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus('idle');
+
+    try {
+      await emailjs.send(
+        'service_oiva6cr',
+        'template_z7v2j8p',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        {
+          publicKey: PUBLIC_KEY,
+        }
+      );
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 3 seconds
+
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 3000);
-    }, 2000);
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus('error');
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 4000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -82,7 +119,6 @@ const Contact: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -93,13 +129,13 @@ const Contact: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
               <p className="text-gray-400 leading-relaxed mb-8">
-                I'm always interested in new opportunities and exciting projects. 
+                I'm always interested in new opportunities and exciting projects.
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
             </div>
 
             <div className="space-y-6">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((info) => (
                 <motion.a
                   key={info.title}
                   variants={staggerItem}
@@ -119,30 +155,33 @@ const Contact: React.FC = () => {
               ))}
             </div>
 
-            {/* Social Links */}
             <motion.div
               variants={staggerItem}
               className="pt-8"
             >
               <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
               <div className="flex space-x-4">
-                {['GitHub', 'Twitter', 'LinkedIn', 'Dribbble'].map((social, index) => (
+                {socials.map((social) => (
                   <motion.a
-                    key={social}
-                    href="#"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300"
                     data-hover
                   >
-                    <span className="text-white text-sm font-medium">{social[0]}</span>
+                    <span className="text-white text-sm font-medium">
+                      {social.name[0]}
+                    </span>
                   </motion.a>
                 ))}
               </div>
+
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             variants={scaleIn}
             initial="initial"
@@ -151,7 +190,7 @@ const Contact: React.FC = () => {
             className="bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -240,10 +279,21 @@ const Contact: React.FC = () => {
                     <span>✓</span>
                     <span>Message Sent!</span>
                   </div>
+                ) : submitStatus === 'error' ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>!</span>
+                    <span>Something went wrong</span>
+                  </div>
                 ) : (
                   'Send Message'
                 )}
               </motion.button>
+
+              {submitStatus === 'error' && (
+                <p className="text-center text-sm text-red-400 mt-2">
+                  There was a problem sending your message. Please try again.
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
